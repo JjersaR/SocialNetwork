@@ -9,11 +9,7 @@ import com.network.social.sn.like.entity.Likes;
 import com.network.social.sn.user.entity.Users;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "Post")
 public class Post {
@@ -43,4 +39,68 @@ public class Post {
 
   @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Likes> likes = new ArrayList<>();
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public Users getUser() {
+    return user;
+  }
+
+  public void setUser(Users user) {
+    this.user = user;
+  }
+
+  public String getContent() {
+    return content;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
+  public LocalDate getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(LocalDate createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public LocalDate getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(LocalDate updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  public List<Comments> getComments() {
+    return comments;
+  }
+
+  public void setComments(List<Comments> comments) {
+    this.comments = comments;
+  }
+
+  public List<Likes> getLikes() {
+    return likes;
+  }
+
+  public void setLikes(List<Likes> likes) {
+    this.likes = likes;
+  }
 }
