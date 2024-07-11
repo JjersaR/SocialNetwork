@@ -14,10 +14,12 @@ public class Followers {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  // Mis seguidores
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(nullable = false)
   private Users follower;
 
+  // a los que sigo
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(nullable = false)
   private Users followee;

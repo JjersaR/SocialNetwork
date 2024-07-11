@@ -31,7 +31,6 @@ public class Post {
   @Column(nullable = false, updatable = false)
   private LocalDate createdAt = LocalDate.now();
 
-  @Column(nullable = false)
   private LocalDate updatedAt = LocalDate.now();
 
   @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
