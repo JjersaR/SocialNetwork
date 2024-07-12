@@ -1,7 +1,10 @@
 package com.network.social.sn.user.service.impl;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -16,8 +19,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.network.social.sn.controller.dto.AuthCreateUser;
 import com.network.social.sn.controller.dto.AuthLoginRequest;
 import com.network.social.sn.controller.dto.AuthResponse;
+import com.network.social.sn.roles.entity.Roles;
+import com.network.social.sn.roles.repository.IRolesRepository;
+import com.network.social.sn.user.entity.Users;
 import com.network.social.sn.user.repository.IUserRepository;
 import com.network.social.sn.util.JwtUtils;
 
@@ -32,6 +39,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
   @Autowired
   private JwtUtils jwtUtils;
+
+  @Autowired
+  private IRolesRepository rolesRepository;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -72,6 +82,44 @@ public class UserDetailServiceImpl implements UserDetailsService {
     }
 
     return new UsernamePasswordAuthenticationToken(username, userDetails.getPassword(), userDetails.getAuthorities());
+  }
+
+  public AuthResponse createUser(AuthCreateUser authCreateUser) {
+    String username = authCreateUser.username();
+    String email = authCreateUser.email();
+    String password = authCreateUser.password();
+    String fullName = authCreateUser.fullName();
+    String bio = authCreateUser.bio();
+    List<String> roleRequest = authCreateUser.roleRequest().roleListName();
+
+    Set<Roles> rolesSet = rolesRepository.findRolesByNameIn(roleRequest).stream().collect(Collectors.toSet());
+
+    if (rolesSet.isEmpty()) {
+      throw new IllegalArgumentException("The roles specified does not exist.");
+    }
+
+    Users user = Users.builder().username(username).email(email).password(passwordEncoder.encode(password))
+        .fullName(fullName).bio(bio).createdAt(LocalDate.now()).roles(rolesSet).isEnabled(true).accountNoExpired(true)
+        .credentialNoExpired(true).accountNoLocked(true).build();
+
+    var userCreated = repository.save(user);
+    ArrayList<SimpleGrantedAuthority> authorityList = new ArrayList<>();
+
+    userCreated.getRoles().forEach(role -> authorityList
+        .add(new SimpleGrantedAuthority("ROLE_".concat(role.getName().name()))));
+
+    userCreated.getRoles().stream().flatMap(role -> role.getPermitsSet().stream())
+        .forEach(permit -> authorityList
+            .add(new SimpleGrantedAuthority(permit.getName().name().toString())));
+
+    Authentication authentication = new UsernamePasswordAuthenticationToken(userCreated.getUsername(),
+        userCreated.getPassword(), authorityList);
+
+    String accessToken = jwtUtils.createToken(authentication);
+
+    AuthResponse authResponse = new AuthResponse(userCreated.getUsername(), "User Created Successfully", accessToken,
+        true);
+    return authResponse;
   }
 
 }

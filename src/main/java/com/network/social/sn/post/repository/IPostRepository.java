@@ -19,11 +19,11 @@ public interface IPostRepository extends JpaRepository<Post, Long> {
 
   Optional<Post> findById(Long id);
 
-  @Query("SELECT p.id AS postId, p.content AS postContent, p.imageUrl AS postImageUrl, COUNT(DISTINCT l.id) AS likes, COUNT(c.content) AS comments FROM Post p LEFT JOIN Likes l ON l.post_id = p.id LEFT JOIN Comments c ON c.post_id = p.id GROUP BY p.id, p.content, p.imageUrl")
+  @Query(value = "SELECT p.id AS postId, p.content AS postContent, p.imageUrl AS postImageUrl, COUNT(DISTINCT l.id) AS likes, COUNT(c.content) AS comments FROM Post p LEFT JOIN Likes l ON l.post_id = p.id LEFT JOIN Comments c ON c.post_id = p.id GROUP BY p.id, p.content, p.imageUrl", nativeQuery = true)
   List<ListAll> findAllPost();
 
   @Transactional
   @Modifying
-  @Query(value = "UPDATE Post p SET p.updatedAt = :#{#post.updatedAt}, p.user_id = :#{#userId}, p.content = COALESCE(:#{#post.content}, p.content), p.image_url = COALESCE(:#{#post.imageUrl}, p.imageUrl) WHERE p.id = :#{#post.postId}", nativeQuery = true)
+  @Query(value = "UPDATE Post p SET p.updatedAt = :#{#post.updatedAt}, p.user_id = :#{#post.userId}, p.content = COALESCE(:#{#post.content}, p.content), p.imageUrl = COALESCE(:#{#post.imageUrl}, p.imageUrl) WHERE p.id = :#{#post.postId}", nativeQuery = true)
   void update(PostUpdate post);
 }

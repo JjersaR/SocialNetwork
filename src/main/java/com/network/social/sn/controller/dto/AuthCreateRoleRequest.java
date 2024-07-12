@@ -8,6 +8,6 @@ import jakarta.validation.constraints.Size;
 
 @Validated
 public record AuthCreateRoleRequest(
-    @Size(max = 2, message = "The user cannot have more than 2 roles") List<String> roleListName) {
+    @Size(max = 3, message = "The user cannot have more than 3 roles") List<String> roleListName) {
 
 }

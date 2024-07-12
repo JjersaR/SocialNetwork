@@ -13,7 +13,9 @@ import com.network.social.sn.post.entity.Post;
 import com.network.social.sn.roles.entity.Roles;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 
+@Builder
 @Entity
 @Table(name = "Users")
 public class Users {
@@ -37,38 +39,38 @@ public class Users {
   private String bio;
 
   @Column(columnDefinition = "DATE", updatable = false)
-  private LocalDate createdAt = LocalDate.now();
+  private LocalDate createdAt;
 
   // SECURITY COLUMNS
   @Column(name = "is_enabled", columnDefinition = "BIT")
-  private boolean isEnabled = true;
+  private boolean isEnabled;
 
   @Column(name = "account_no_expired", columnDefinition = "BIT")
-  private boolean accountNoExpired = true;
+  private boolean accountNoExpired;
 
   @Column(name = "account_no_locked", columnDefinition = "BIT")
-  private boolean accountNoLocked = true;
+  private boolean accountNoLocked;
 
   @Column(name = "credential_no_expired", columnDefinition = "BIT")
-  private boolean credentialNoExpired = true;
+  private boolean credentialNoExpired;
 
   // RELATIONS
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Post> posts = new ArrayList<>();
+  private List<Post> posts;
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Comments> comments = new ArrayList<>();
+  private List<Comments> comments;
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Likes> likes = new ArrayList<>();
+  private List<Likes> likes;
 
   // Mis seguidores
   @OneToMany(mappedBy = "follower", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Followers> followers = new ArrayList<>();
+  private List<Followers> followers;
 
   // a los que sigo
   @OneToMany(mappedBy = "followee", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Followers> followees = new ArrayList<>();
+  private List<Followers> followees;
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "User_ID"), inverseJoinColumns = @JoinColumn(name = "Rol_ID"))
