@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class ListAllUsers implements Serializable {
 
+  private Long id;
+
   private String username;
 
   private String fullName;
@@ -11,6 +13,14 @@ public class ListAllUsers implements Serializable {
   private String bio;
 
   private String email;
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 
   public String getUsername() {
     return username;

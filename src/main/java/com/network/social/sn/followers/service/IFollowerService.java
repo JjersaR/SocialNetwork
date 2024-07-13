@@ -14,4 +14,6 @@ public interface IFollowerService {
   void save(Followers followers);
 
   void delete(Long id);
+
+  void deleteFollow(Long followee, Long follower);
 }

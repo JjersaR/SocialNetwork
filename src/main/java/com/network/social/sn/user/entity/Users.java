@@ -1,7 +1,6 @@
 package com.network.social.sn.user.entity;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,8 +12,12 @@ import com.network.social.sn.post.entity.Post;
 import com.network.social.sn.roles.entity.Roles;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
 @Table(name = "Users")

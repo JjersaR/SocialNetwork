@@ -15,9 +15,9 @@ public interface IUserMapper {
   IUserMapper INSTANCE = Mappers.getMapper(IUserMapper.class);
 
   // List all
+  @Mapping(target = "fullname", source = "fullName")
   ListAllUsers toUserDTO(Users user);
 
-  @Mapping(target = "id", ignore = true)
   @Mapping(target = "createdAt", ignore = true)
   @Mapping(target = "isEnabled", ignore = true)
   @Mapping(target = "accountNoExpired", ignore = true)
@@ -29,5 +29,6 @@ public interface IUserMapper {
   @Mapping(target = "followers", ignore = true)
   @Mapping(target = "followees", ignore = true)
   @Mapping(target = "roles", ignore = true)
+  @Mapping(target = "fullname", source = "fullName")
   List<ListAllUsers> toUserListDTO(List<Users> users);
 }

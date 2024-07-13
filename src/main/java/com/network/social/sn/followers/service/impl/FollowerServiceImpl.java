@@ -43,4 +43,8 @@ public class FollowerServiceImpl implements IFollowerService {
     repository.deleteById(id);
   }
 
+  @Override
+  public void deleteFollow(Long followee, Long follower) {
+    repository.deleteByFolloweeAndFollower(followee, follower);
+  }
 }

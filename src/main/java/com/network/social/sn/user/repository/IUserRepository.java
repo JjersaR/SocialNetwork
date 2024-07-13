@@ -22,11 +22,11 @@ public interface IUserRepository extends JpaRepository<Users, Long> {
 
   Optional<Users> findById(Long id);
 
-  @Query(value = "SELECT DISTINCT u.username follower, u.fullName, u.bio FROM Users u INNER JOIN Followers f WHERE f.follower_id = :id", nativeQuery = true)
+  @Query(value = "SELECT DISTINCT u.id, u.username follower, u.fullName, u.bio FROM Users u INNER JOIN Followers f WHERE f.follower_id = :id", nativeQuery = true)
   List<IMyFollowers> findFollowersByUserId(Long id);
 
   @Transactional
   @Modifying
-  @Query(value = "UPDATE Users u SET u.email = COALESCE(:#{#user.email}, u.email), u.username = COALESCE(:#{#user.username}, u.username), u.fullName = COALESCE(:#{#user.fullName}, u.fullName), u.bio = COALESCE(:#{#user.bio}, u.bio), u.password = COALESCE(:#{#user.password, u.password) WHERE u.id = :#{#user.id}", nativeQuery = true)
+  @Query("UPDATE Users u SET u.email = COALESCE(:#{#user.email}, u.email), u.username = COALESCE(:#{#user.username}, u.username), u.fullName = COALESCE(:#{#user.fullName}, u.fullName), u.bio = COALESCE(:#{#user.bio}, u.bio), u.password = COALESCE(:#{#user.password}, u.password) WHERE u.id = :#{#user.id}")
   void update(@Param("user") UserUpdate user);
 }
