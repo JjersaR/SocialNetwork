@@ -53,4 +53,18 @@ public class CommentsServiceImpl implements ICommentsService {
     }
     repository.deleteById(id);
   }
+
+  @Override
+  public void deleteComment(Long commentId, Long userId, Long postId) {
+    if (!repository.findById(commentId).isPresent()) {
+      throw new ObjectWithoutFound("The comment does not exist");
+    }
+    if (!userRepository.findById(userId).isPresent()) {
+      throw new ObjectWithoutFound("The user does not exist");
+    }
+    if (!postRepository.findById(postId).isPresent()) {
+      throw new ObjectWithoutFound("This post does not exist");
+    }
+    repository.deleteComment(commentId, userId, postId);
+  }
 }

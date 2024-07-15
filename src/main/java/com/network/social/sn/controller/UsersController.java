@@ -52,7 +52,6 @@ public class UsersController {
     return ResponseEntity.ok(userService.findFollowers(id));
   }
 
-  // id -> person I unfollowed followerId -> my id
   @PostMapping("{id}/followers/{followerId}")
   public ResponseEntity<String> followUser(@PathVariable Long id, @PathVariable Long followerId) {
     var follow = new Follow();
@@ -62,6 +61,7 @@ public class UsersController {
     return ResponseEntity.ok("You Followed " + follow.getFolloweeId());
   }
 
+  // id -> person I unfollowed followerId -> my id
   @DeleteMapping("{id}/unfollowed/{followerId}")
   public ResponseEntity<String> deleteFollow(@PathVariable Long id, @PathVariable Long followerId) {
     followersService.deleteFollow(id, followerId);

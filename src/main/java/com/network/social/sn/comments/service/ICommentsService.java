@@ -12,4 +12,6 @@ public interface ICommentsService {
   void save(Comments comment);
 
   void deleteById(Long id);
+
+  void deleteComment(Long commentId, Long userId, Long postId);
 }

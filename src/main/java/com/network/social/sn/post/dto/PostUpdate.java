@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.NotBlank;
 
 public class PostUpdate {
 
@@ -14,7 +15,7 @@ public class PostUpdate {
   @JsonIgnore
   private Long userId;
 
-  @Nullable
+  @NotBlank
   private String content;
 
   @JsonIgnore

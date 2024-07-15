@@ -1,7 +1,14 @@
 package com.network.social.sn.post.dto;
 
-import java.io.Serializable;
+public interface ListAll {
 
-public class ListAll implements Serializable {
+  Long getPostId();
 
+  String getPostContent();
+
+  String getPostImageUrl();
+
+  int getLikes();
+
+  int getComments();
 }

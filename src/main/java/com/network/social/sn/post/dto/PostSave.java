@@ -1,35 +1,29 @@
-package com.network.social.sn.comments.dto;
+package com.network.social.sn.post.dto;
 
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public class CommentSave {
-
-  @JsonIgnore
-  private Long postId;
-
-  @JsonIgnore
-  private Long userId;
+public class PostSave {
 
   @NotNull
+  private Long userId;
+
+  @NotBlank
   private String content;
+
+  @Nullable
+  private String imageUrl;
 
   @JsonIgnore
   private LocalDate createdAt = LocalDate.now();
 
   @JsonIgnore
   private LocalDate updatedAt = LocalDate.now();
-
-  public Long getPostId() {
-    return postId;
-  }
-
-  public void setPostId(Long postId) {
-    this.postId = postId;
-  }
 
   public Long getUserId() {
     return userId;
@@ -47,6 +41,14 @@ public class CommentSave {
     this.content = content;
   }
 
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
   public LocalDate getCreatedAt() {
     return createdAt;
   }
@@ -62,5 +64,4 @@ public class CommentSave {
   public void setUpdatedAt(LocalDate updatedAt) {
     this.updatedAt = updatedAt;
   }
-
 }

@@ -19,7 +19,7 @@ public interface IPostRepository extends JpaRepository<Post, Long> {
 
   Optional<Post> findById(Long id);
 
-  @Query(value = "SELECT p.id AS postId, p.content AS postContent, p.imageUrl AS postImageUrl, COUNT(DISTINCT l.id) AS likes, COUNT(c.content) AS comments FROM Post p LEFT JOIN Likes l ON l.post_id = p.id LEFT JOIN Comments c ON c.post_id = p.id GROUP BY p.id, p.content, p.imageUrl", nativeQuery = true)
+  @Query(value = "SELECT p.id AS postId, p.content AS postContent, p.imageUrl AS postImageUrl, COUNT(DISTINCT l.id) AS likes, COUNT(DISTINCT c.content) AS comments FROM Post p LEFT JOIN Likes l ON l.post_id = p.id LEFT JOIN Comments c ON c.post_id = p.id GROUP BY p.id, p.content, p.imageUrl", nativeQuery = true)
   List<ListAll> findAllPost();
 
   @Transactional
