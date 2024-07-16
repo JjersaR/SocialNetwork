@@ -7,4 +7,6 @@ public interface ILikeService {
   void save(Likes like);
 
   void deleteById(Long id);
+
+  void deleteLike(Long postId, Long UserId);
 }
