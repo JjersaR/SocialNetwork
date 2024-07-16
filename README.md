@@ -168,3 +168,14 @@ Although there are 5 entities, only 3 controllers are shown since Post and Comme
 Remember that every http request must have a valid token.
 
 If you want to test this api I will leave you a sql file so you have default data
+
+# Docker
+To run this project you have to have docker and docker-compose, be in the root of the project and run this command:
+```docker
+docker-compose up --build -d
+```
+
+If it is done in linux the command would be:
+```docker
+sudo docker-compose up --build -d
+```

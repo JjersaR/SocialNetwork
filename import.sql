@@ -29,7 +29,7 @@ VALUES(1, 1),(2, 1),(3, 1),(4, 1),(5, 1),(6, 1),(7, 1),(8, 1),(9, 1),(10, 1),(11
 
 INSERT INTO SocialNetwork.users_roles
 (Rol_ID, User_ID)
-VALUES(1, 1), (2, 1), (3, 1),
+VALUES(1, 1), (2, 1),
 (1, 2), (2, 2), (3, 2),
 (1, 3), (2, 3),
 (2, 4), (3, 4),
@@ -117,7 +117,7 @@ INSERT INTO SocialNetwork.Likes (createdAt, post_id, user_id) VALUES
 (CURRENT_TIMESTAMP, 19, 8), 
 (CURRENT_TIMESTAMP, 20, 9), 
 (CURRENT_TIMESTAMP, 21, 10), 
-(CURRENT_TIMESTAMP, 22, 11);
+(CURRENT_TIMESTAMP, 22, 11),
 (CURRENT_TIMESTAMP, 5, 6), 
 (CURRENT_TIMESTAMP, 6, 7), 
 (CURRENT_TIMESTAMP, 7, 8), 
@@ -187,9 +187,7 @@ INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, cont
 ('2024-07-15', '2024-07-25', 4, 5, 'Loved this!'),
 ('2024-07-15', '2024-07-27', 5, 6, 'Very informative.'),
 ('2024-07-15', '2024-07-19', 6, 7, 'Nice picture!'),
-('2024-07-15', '2024-07-23', 7, 8, 'Well written.');
-
-INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, content) VALUES
+('2024-07-15', '2024-07-23', 7, 8, 'Well written.'),
 ('2024-07-15', '2024-07-21', 8, 9, 'This is amazing!'),
 ('2024-07-15', '2024-07-17', 9, 10, 'Great insights.'),
 ('2024-07-15', '2024-07-26', 10, 11, 'I totally agree.'),
@@ -201,9 +199,7 @@ INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, cont
 ('2024-07-15', '2024-07-18', 16, 6, 'Nice content!'),
 ('2024-07-15', '2024-07-20', 17, 7, 'Very interesting.'),
 ('2024-07-15', '2024-07-21', 18, 8, 'Keep it up!'),
-('2024-07-15', '2024-07-23', 19, 9, 'Well done!');
-
-INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, content) VALUES
+('2024-07-15', '2024-07-23', 19, 9, 'Well done!'),
 ('2024-07-15', '2024-07-22', 20, 10, 'Excellent!'),
 ('2024-07-15', '2024-07-19', 21, 11, 'Brilliant!'),
 ('2024-07-15', '2024-07-24', 22, 1, 'Superb!'),
@@ -212,9 +208,7 @@ INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, cont
 ('2024-07-15', '2024-07-26', 25, 4, 'Great advice.'),
 ('2024-07-15', '2024-07-17', 26, 5, 'Incredible post!'),
 ('2024-07-15', '2024-07-29', 27, 6, 'Nicely written.'),
-('2024-07-15', '2024-07-16', 28, 7, 'Very nice!');
-
-INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, content) VALUES
+('2024-07-15', '2024-07-16', 28, 7, 'Very nice!'),
 ('2024-07-15', '2024-07-27', 29, 8, 'Thank you!'),
 ('2024-07-15', '2024-07-20', 30, 9, 'Awesome!'),
 ('2024-07-15', '2024-07-18', 31, 10, 'Great stuff.'),
@@ -224,9 +218,7 @@ INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, cont
 ('2024-07-15', '2024-07-18', 1, 3, 'Interesting read.'),
 ('2024-07-15', '2024-07-22', 1, 4, 'Thanks for sharing!'),
 ('2024-07-15', '2024-07-25', 2, 5, 'Loved this!'),
-('2024-07-15', '2024-07-27', 2, 6, 'Very informative.');
-
-INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, content) VALUES
+('2024-07-15', '2024-07-27', 2, 6, 'Very informative.'),
 ('2024-07-15', '2024-07-24', 4, 1, 'Fantastic!'),
 ('2024-07-15', '2024-07-28', 4, 2, 'Awesome post!'),
 ('2024-07-15', '2024-07-29', 5, 3, 'Very helpful.'),
@@ -237,9 +229,7 @@ INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, cont
 ('2024-07-15', '2024-07-21', 6, 8, 'Keep it up!'),
 ('2024-07-15', '2024-07-23', 7, 9, 'Well done!'),
 ('2024-07-15', '2024-07-22', 7, 10, 'Excellent!'),
-('2024-07-15', '2024-07-19', 7, 11, 'Brilliant!');
-
-INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, content) VALUES
+('2024-07-15', '2024-07-19', 7, 11, 'Brilliant!'),
 ('2024-07-15', '2024-07-24', 8, 1, 'Superb!'),
 ('2024-07-15', '2024-07-25', 8, 2, 'Loved it!'),
 ('2024-07-15', '2024-07-28', 8, 3, 'Thanks for this!'),
@@ -248,9 +238,7 @@ INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, cont
 ('2024-07-15', '2024-07-29', 9, 6, 'Nicely written.'),
 ('2024-07-15', '2024-07-16', 10, 7, 'Very nice!'),
 ('2024-07-15', '2024-07-27', 10, 8, 'Thank you!'),
-('2024-07-15', '2024-07-20', 10, 9, 'Awesome!');
-
-INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, content) VALUES
+('2024-07-15', '2024-07-20', 10, 9, 'Awesome!'),
 ('2024-07-15', '2024-07-18', 11, 10, 'Great stuff.'),
 ('2024-07-15', '2024-07-22', 11, 11, 'Very good post.'),
 ('2024-07-15', '2024-07-23', 11, 1, 'Loved this content.'),
@@ -261,9 +249,7 @@ INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, cont
 ('2024-07-15', '2024-07-27', 13, 6, 'Very informative again.'),
 ('2024-07-15', '2024-07-19', 13, 7, 'Nice picture once more!'),
 ('2024-07-15', '2024-07-21', 14, 8, 'Well written again.'),
-('2024-07-15', '2024-07-23', 14, 9, 'This is still amazing!');
-
-INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, content) VALUES
+('2024-07-15', '2024-07-23', 14, 9, 'This is still amazing!'),
 ('2024-07-15', '2024-07-18', 14, 10, 'Great insights once again.'),
 ('2024-07-15', '2024-07-22', 15, 11, 'I totally agree with this!'),
 ('2024-07-15', '2024-07-26', 15, 1, 'Fantastic post!'),
@@ -278,9 +264,7 @@ INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, cont
 ('2024-07-15', '2024-07-22', 18, 10, 'Excellent post!'),
 ('2024-07-15', '2024-07-19', 18, 11, 'Brilliant work!'),
 ('2024-07-15', '2024-07-24', 19, 1, 'Superb content!'),
-('2024-07-15', '2024-07-25', 19, 2, 'Loved this post!');
-
-INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, content) VALUES
+('2024-07-15', '2024-07-25', 19, 2, 'Loved this post!'),
 ('2024-07-15', '2024-07-28', 19, 3, 'Thanks for this content!'),
 ('2024-07-15', '2024-07-26', 20, 4, 'Great advice here.'),
 ('2024-07-15', '2024-07-17', 20, 5, 'Incredible post once more!'),
@@ -296,11 +280,3 @@ INSERT INTO SocialNetwork.Comments (createdAt, updatedAt, post_id, user_id, cont
 ('2024-07-15', '2024-07-28', 23, 4, 'Thanks for the update here!'),
 ('2024-07-15', '2024-07-20', 24, 5, 'Loved this one as well!'),
 ('2024-07-15', '2024-07-27', 24, 6, 'Very informative content.');
-
-
-
-
-
-
-
-

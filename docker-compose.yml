@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  social-Network:
+    image: socialnetwork-api
+    container_name: socialnetwork-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - socialNetwork-network
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql
+    container_name: SocialNetworkBD
+    ports:
+      - "3307:3306"
+    networks:
+      - socialNetwork-network
+    environment:
+      MYSQL_ROOT_PASSWORD: 271631126
+      MYSQL_DATABASE: SocialNetwork
+      MYSQL_USER: jersa
+      MYSQL_PASSWORD: jersaBP56
+    volumes:
+      - snBD-Volumes:/var/lib/mysql
+
+networks:
+  socialNetwork-network:
+
+volumes:
+  snBD-Volumes:
