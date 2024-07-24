@@ -23,7 +23,7 @@ RUN ./mvnw dependency:go-offline
 COPY ./src /app/src
 
 # BUILD APPLICATION
-RUN ./mvnw clean install -DskipTests
+RUN ./mvnw clean install
 
 # lift application
 ENTRYPOINT [ "java", "-jar", "/app/target/social-network-0.0.1-SNAPSHOT.jar" ]
