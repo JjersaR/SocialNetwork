@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.network.social.sn.controller.handleEx.ObjectWithoutContent;
+import com.network.social.sn.controller.handleEx.ObjectWithoutFound;
 import com.network.social.sn.followers.dto.IListUsers;
 import com.network.social.sn.followers.entity.Followers;
 import com.network.social.sn.followers.repository.IFollowersRepository;
@@ -40,6 +41,9 @@ public class FollowerServiceImpl implements IFollowerService {
 
   @Override
   public void delete(Long id) {
+    if (repository.findById(id).isEmpty()) {
+      throw new ObjectWithoutFound("This follow doesn't exist");
+    }
     repository.deleteById(id);
   }
 
