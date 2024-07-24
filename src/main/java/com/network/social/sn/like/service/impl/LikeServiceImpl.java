@@ -29,6 +29,9 @@ public class LikeServiceImpl implements ILikeService {
 
   @Override
   public void deleteById(Long id) {
+    if (repository.findById(id).isEmpty()) {
+      throw new ObjectWithoutFound("This like doesn't exist");
+    }
     repository.deleteById(id);
   }
 
@@ -39,7 +42,6 @@ public class LikeServiceImpl implements ILikeService {
     }
     if (!userRepository.findById(UserId).isPresent()) {
       throw new ObjectWithoutFound("This user doesn't exist");
-
     }
     repository.deleteLike(postId, UserId);
   }
