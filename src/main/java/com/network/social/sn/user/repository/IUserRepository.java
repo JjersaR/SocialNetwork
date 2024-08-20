@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +23,7 @@ public interface IUserRepository extends JpaRepository<Users, Long> {
 
   Optional<Users> findById(Long id);
 
-  @Query(value = "SELECT DISTINCT u.id, u.username follower, u.fullName, u.bio FROM Users u INNER JOIN Followers f WHERE f.follower_id = :id", nativeQuery = true)
+  @Procedure
   List<IMyFollowers> findFollowersByUserId(Long id);
 
   @Transactional
